@@ -10,7 +10,7 @@ API para cadastro de propostas de empréstimo com processamento assíncrono.
 
 ```bash
 git clone https://github.com/erickmolina2002/test-app.git
-cd app
+cd test-app
 cp .env.example .env
 docker compose up -d --build
 docker exec app-app php artisan key:generate
