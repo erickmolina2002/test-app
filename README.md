@@ -13,9 +13,12 @@ git clone https://github.com/erickmolina2002/test-app.git
 cd test-app
 cp .env.example .env
 docker compose up -d --build
-docker exec app-app php artisan key:generate
-docker exec app-app php artisan migrate
 ```
+
+O entrypoint cuida automaticamente de:
+- Instalar dependências (`composer install`)
+- Gerar `APP_KEY` se estiver vazia
+- Rodar migrations
 
 A API estará disponível em `http://localhost:8000`.
 
