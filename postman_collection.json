@@ -1,0 +1,127 @@
+{
+	"info": {
+		"name": "Mini App",
+		"description": "API de cadastro de propostas de empréstimo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000"
+		}
+	],
+	"item": [
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/up",
+					"host": ["{{base_url}}"],
+					"path": ["up"]
+				}
+			}
+		},
+		{
+			"name": "Criar Proposta - Sucesso",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cpf\": \"12312312312\",\n    \"nome\": \"Fulano de Tal\",\n    \"data_nascimento\": \"1990-05-15\",\n    \"valor_emprestimo\": 1000.00,\n    \"chave_pix\": \"teste@teste.com\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/proposal",
+					"host": ["{{base_url}}"],
+					"path": ["proposal"]
+				}
+			}
+		},
+		{
+			"name": "Criar Proposta - Sem CPF (422)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\": \"Fulano de Tal\",\n    \"data_nascimento\": \"1990-05-15\",\n    \"valor_emprestimo\": 1000.00,\n    \"chave_pix\": \"teste@teste.com\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/proposal",
+					"host": ["{{base_url}}"],
+					"path": ["proposal"]
+				}
+			}
+		},
+		{
+			"name": "Criar Proposta - Valor Negativo (422)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cpf\": \"12312312312\",\n    \"nome\": \"Fulano de Tal\",\n    \"data_nascimento\": \"1990-05-15\",\n    \"valor_emprestimo\": -500.00,\n    \"chave_pix\": \"teste@teste.com\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/proposal",
+					"host": ["{{base_url}}"],
+					"path": ["proposal"]
+				}
+			}
+		},
+		{
+			"name": "Criar Proposta - Body Vazio (422)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"url": {
+					"raw": "{{base_url}}/proposal",
+					"host": ["{{base_url}}"],
+					"path": ["proposal"]
+				}
+			}
+		}
+	]
+}

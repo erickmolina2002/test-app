@@ -1,0 +1,45 @@
+# Environment
+.env
+.env.backup
+.env.production
+
+# Dependencies
+/vendor
+/node_modules
+
+# Laravel
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/bootstrap/cache/services.php
+/bootstrap/cache/packages.php
+
+# IDE
+/.fleet
+/.idea
+/.nova
+/.phpunit.cache
+/.vscode
+/.zed
+_ide_helper.php
+.phpactor.json
+
+# Testing
+.phpunit.result.cache
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+
+# Auth
+/auth.json
+Homestead.json
+Homestead.yaml
+
+# Logs
+*.log
