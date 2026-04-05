@@ -31,7 +31,7 @@ class CreateProposalDTO extends Data
     public static function rules(): array
     {
         return [
-            'cpf' => ['required', 'string'],
+            'cpf' => ['required', 'string', 'regex:/^\d+$/'],
             'nome' => ['required', 'string', 'max:255'],
             'data_nascimento' => ['required', 'date', 'before:today'],
             'valor_emprestimo' => ['required', 'numeric', 'min:0.01'],
@@ -43,6 +43,7 @@ class CreateProposalDTO extends Data
     {
         return [
             'cpf.required' => 'O CPF é obrigatório.',
+            'cpf.regex' => 'O CPF deve conter apenas números.',
             'nome.required' => 'O nome é obrigatório.',
             'data_nascimento.required' => 'A data de nascimento é obrigatória.',
             'data_nascimento.date' => 'A data de nascimento deve ser uma data válida.',
