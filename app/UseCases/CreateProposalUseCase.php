@@ -7,20 +7,11 @@ use App\Enums\ProposalStatus;
 use App\Jobs\RegisterProposalJob;
 use App\Models\Proposal;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Validation\ValidationException;
 
 class CreateProposalUseCase
 {
     public function execute(CreateProposalDTO $dto): Proposal
     {
-        $existingProposal = Proposal::where('cpf', $dto->cpf)->first();
-
-        if ($existingProposal) {
-            throw ValidationException::withMessages([
-                'cpf' => ['Já existe uma proposta cadastrada para este CPF.'],
-            ]);
-        }
-
         $proposal = Proposal::create([
             'cpf' => $dto->cpf,
             'nome' => $dto->nome,
