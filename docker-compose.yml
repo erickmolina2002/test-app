@@ -72,7 +72,7 @@ services:
     image: redis:7-alpine
     container_name: app-redis
     ports:
-      - "6379:6379"
+      - "6371:6379"
     volumes:
       - redisdata:/data
     healthcheck:
@@ -87,7 +87,7 @@ services:
     image: postgres:16-alpine
     container_name: app-postgres
     ports:
-      - "5432:5432"
+      - "5439:5432"
     environment:
       POSTGRES_DB: app
       POSTGRES_USER: app
